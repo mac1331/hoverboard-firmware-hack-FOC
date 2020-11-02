@@ -275,7 +275,11 @@ int main(void) {
       // ####### MIXER #######
       // speedR = CLAMP((int)(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT), INPUT_MIN, INPUT_MA);
       // speedL = CLAMP((int)(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT), INPUT_MIN, INPUT_MA);
-      mixerFcn(speed << 4, steer << 4, &speedR, &speedL);   // This function implements the equations above
+      
+      //comented by marc mixer not necessary speeds come trhought serial
+      //mixerFcn(speed << 4, steer << 4, &speedR, &speedL);   // This function implements the equations above
+      speedR = speed;
+      speedL = steer;
 
       // ####### SET OUTPUTS (if the target change is less than +/- 100) #######
       if ((speedL > lastSpeedL-100 && speedL < lastSpeedL+100) && (speedR > lastSpeedR-100 && speedR < lastSpeedR+100)) {
